@@ -41,6 +41,7 @@
             <groupId>net.sf.sevenzipjbinding</groupId>
             <artifactId>sevenzipjbinding</artifactId>
             <version>16.02-2.01</version>
+            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>net.sf.sevenzipjbinding</groupId>
@@ -103,7 +104,7 @@
                             </filters>
                             <transformers>
                                 <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                    <mainClass>me.ycvk.codetest.RarDemo</mainClass>
+                                    <mainClass>me.ycvk.rarUtils.RarApplication</mainClass>
                                 </transformer>
                             </transformers>
                         </configuration>

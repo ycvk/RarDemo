@@ -1,4 +1,4 @@
-package me.ycvk.codetest;
+package me.ycvk.rarUtils;
 
 import net.sf.sevenzipjbinding.*;
 
@@ -26,11 +26,11 @@ public class ExtractCallback implements IArchiveExtractCallback {
     }
 
     @Override
-    public void setCompleted(long arg0) throws SevenZipException {
+    public void setCompleted(long arg0) {
     }
 
     @Override
-    public void setTotal(long arg0) throws SevenZipException {
+    public void setTotal(long arg0) {
     }
 
     @Override
@@ -43,8 +43,8 @@ public class ExtractCallback implements IArchiveExtractCallback {
         return data -> {
             try {
                 if (!isFolder) {
-//                        System.out.println(path);
-                    File file = new File(ourDir + "\\" + path);
+                    System.out.println(path);
+                    File file = new File(ourDir + File.separator + path);
                     save2File(file, data, path.equals(oldPath[0]));
                     oldPath[0] = path;
                 }
@@ -56,7 +56,7 @@ public class ExtractCallback implements IArchiveExtractCallback {
     }
 
     @Override
-    public void prepareOperation(ExtractAskMode arg0) throws SevenZipException {
+    public void prepareOperation(ExtractAskMode arg0) {
     }
 
     @Override
