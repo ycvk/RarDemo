@@ -20,10 +20,17 @@ import java.util.stream.IntStream;
  * @date 2022/1/6/22:14
  */
 public class RarDemo {
+    
+    private static final String FILE_SEPARATOR = System.getProperty("file.separator");
+
+    public static String getRealFilePath(String path){
+        return path.replace("/",FILE_SEPARATOR).replace("\\",FILE_SEPARATOR);
+    }
+
     public static void main(String[] args) throws IOException {
-//        String rarDir = "D:\\TEMP\\A.rar";
-//        String outDir = "D:\\TEMP\\rar5";
-        decompression(args[0], args[1]);
+        String rarDir = getRealFilePath(args[0]);
+        String outDir = getRealFilePath(args[1]);
+        decompression(rarDir, outDir);
     }
 
     public static void decompression(String rarDir, String outDir) throws SevenZipException, FileNotFoundException {
