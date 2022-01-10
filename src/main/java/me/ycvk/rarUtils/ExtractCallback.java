@@ -37,6 +37,7 @@ public class ExtractCallback implements IArchiveExtractCallback {
     public ISequentialOutStream getStream(int index, ExtractAskMode extractAskMode) throws SevenZipException {
         this.index = index;
         final String path = (String) inArchive.getProperty(index, PropID.PATH);
+        System.out.println("path === >" + path);
         //如果是文件夹，则不需要解压
         final boolean isFolder = (boolean) inArchive.getProperty(index, PropID.IS_FOLDER);
         final String[] oldPath = {""};
@@ -71,6 +72,14 @@ public class ExtractCallback implements IArchiveExtractCallback {
 //                log.error(sb.toString());
 //            }
 //        }
+        if (!isFolder) {
+            if (extractOperationResult != ExtractOperationResult.OK) {
+                StringBuilder sb = new StringBuilder();
+                sb.append("解压").append(packageName).append("包的").append(path).append("文件");
+                sb.append("失败！");
+                System.out.println(sb);
+            }
+        }
     }
 
     public static boolean save2File(File file, byte[] msg, boolean append) {
